@@ -18,9 +18,13 @@ class Person : IPerson
 		Money = starterAmount;
 	}
 
+	public static void AddMoney(Person person, int amount)
+	{
+		person.Money += amount;
+	}
+
 	public virtual int PayMoney(int toPay)
 	{
-		// Console.WriteLine(toPay);
 
 		return Money -= toPay;
 	}
@@ -35,14 +39,13 @@ class Employee : Person
 		EmployeeID = employeeID;
 	}
 
+	public Employee(int employeeID, int initialAmount) : base(initialAmount)
+	{
+		EmployeeID = employeeID;
+	}
+
 	public override int PayMoney(int amount)
 	{
 		return Money -= (int)Math.Floor(amount / 2.0);
-	}
-
-	public static void AddMoney(Person person, int amount)
-	{
-		person.Money += amount;
-
 	}
 }
